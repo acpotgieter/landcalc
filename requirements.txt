@@ -2,6 +2,7 @@ folium
 geojson
 geopandas
 ipyleaflet
+localtileserver
 matplotlib
 numpy
 pandas
