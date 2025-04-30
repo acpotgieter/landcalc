@@ -1,4 +1,6 @@
 folium
+geojson
+geopandas
 ipyleaflet
 matplotlib
 numpy
