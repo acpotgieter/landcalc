@@ -9,7 +9,7 @@
 
 -   Free software: MIT License
 -   Documentation: <https://acpotgieter.github.io/landcalc>
-    
+
 
 ## Features
 

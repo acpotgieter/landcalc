@@ -2,7 +2,7 @@
 
 import os
 import ipyleaflet
-import ipywidgets as widgetsss
+import ipywidgets as widgets
 
 
 class Map(ipyleaflet.Map):
