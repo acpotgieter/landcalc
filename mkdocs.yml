@@ -80,6 +80,7 @@ nav:
     - Changelog: changelog.md
     - Report Issues: https://github.com/acpotgieter/landcalc/issues
     - Examples:
+          - examples/intro.ipynb 
     - API Reference:
           - landcalc module: landcalc.md
           - common module: common.md
