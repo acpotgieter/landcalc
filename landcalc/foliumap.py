@@ -1,5 +1,7 @@
 """Adds custom Map class that extends the folium Map class."""
+
 import folium
+
 
 class Map(folium.Map):
     """Custom Map class that extends the folium Map class."""
