@@ -13,6 +13,17 @@ class Map(ipyleaflet.Map):
         self.scroll_wheel_zoom = True
 
     def add_basemap(self, basemap="OpenTopoMap"):
+        basemap_urls = {
+            "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        }
+
+        if basemap not in basemap_urls:
+            raise ValueError(f"Unsupported basemap: {basemap}")
+
+        url = basemap_urls[basemap]
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
         self.add(layer)
 
@@ -72,6 +83,36 @@ class Map(ipyleaflet.Map):
         dropdown.observe(on_dropdown_change, names="value")
 
         control = ipyleaflet.WidgetControl(widget=hbox, position=position)
+        self.add(control)
+
+    def add_split_map(
+        self, left_layer="OpenStreetMap.Mapnik", right_layer="Esri.WorldImagery"
+    ):
+        """Adds a split map control to the map.
+
+        Args:
+            left_layer (str): The tile layer name for the left side. Default is "OpenStreetMap.Mapnik".
+            right_layer (str): The tile layer name for the right side. Default is "Esri.WorldImagery".
+        """
+        basemaps = {
+            "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        }
+
+        if left_layer not in basemaps or right_layer not in basemaps:
+            raise ValueError(
+                "Basemap not supported. Check spelling or add it to the dictionary."
+            )
+
+        left = ipyleaflet.TileLayer(url=basemaps[left_layer], name=left_layer)
+        right = ipyleaflet.TileLayer(url=basemaps[right_layer], name=right_layer)
+
+        self.add(left)
+        self.add(right)
+
+        control = ipyleaflet.SplitMapControl(left_layer=left, right_layer=right)
         self.add(control)
 
     def add_widget(self, widget, position="topright", **kwargs):
