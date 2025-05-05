@@ -81,6 +81,7 @@ nav:
     - Report Issues: https://github.com/acpotgieter/landcalc/issues
     - Examples:
           - examples/intro.ipynb
+          - examples/folium.ipynb
     - API Reference:
           - landcalc module: landcalc.md
           - common module: common.md
