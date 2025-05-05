@@ -142,23 +142,23 @@ class Map(folium.Map):
         basemaps = {
             "OpenStreetMap": {
                 "tiles": "OpenStreetMap",
-                "attr": "© OpenStreetMap contributors"
+                "attr": "© OpenStreetMap contributors",
             },
             "Esri.WorldImagery": {
                 "tiles": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-                "attr": "Tiles © Esri"
+                "attr": "Tiles © Esri",
             },
             "OpenTopoMap": {
                 "tiles": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
-                "attr": "© OpenTopoMap contributors"
+                "attr": "© OpenTopoMap contributors",
             },
             "CartoDB.Positron": {
                 "tiles": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                "attr": "© CartoDB"
+                "attr": "© CartoDB",
             },
             "Stamen.Terrain": {
                 "tiles": "https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg",
-                "attr": "Map tiles by Stamen Design, CC BY 3.0"
+                "attr": "Map tiles by Stamen Design, CC BY 3.0",
             },
         }
 

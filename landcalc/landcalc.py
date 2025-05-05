@@ -5,7 +5,6 @@ import ipyleaflet
 import ipywidgets as widgets
 
 
-
 class Map(ipyleaflet.Map):
     def __init__(self, center=[20, 0], zoom=2, height="600px", **kwargs):
 
@@ -15,14 +14,14 @@ class Map(ipyleaflet.Map):
 
     def add_basemap(self, basemap="OpenTopoMap"):
         basemap_urls = {
-        "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
-        "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-    }
+            "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        }
 
         if basemap not in basemap_urls:
-         raise ValueError(f"Unsupported basemap: {basemap}")
+            raise ValueError(f"Unsupported basemap: {basemap}")
 
         url = basemap_urls[basemap]
         layer = ipyleaflet.TileLayer(url=url, name=basemap)
@@ -86,7 +85,9 @@ class Map(ipyleaflet.Map):
         control = ipyleaflet.WidgetControl(widget=hbox, position=position)
         self.add(control)
 
-    def add_split_map(self, left_layer="OpenStreetMap.Mapnik", right_layer="Esri.WorldImagery"):
+    def add_split_map(
+        self, left_layer="OpenStreetMap.Mapnik", right_layer="Esri.WorldImagery"
+    ):
         """Adds a split map control to the map.
 
         Args:
@@ -94,14 +95,16 @@ class Map(ipyleaflet.Map):
             right_layer (str): The tile layer name for the right side. Default is "Esri.WorldImagery".
         """
         basemaps = {
-        "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
-        "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-    }
+            "OpenStreetMap.Mapnik": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            "OpenTopoMap": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+            "Esri.WorldImagery": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            "CartoDB.DarkMatter": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        }
 
         if left_layer not in basemaps or right_layer not in basemaps:
-            raise ValueError("Basemap not supported. Check spelling or add it to the dictionary.")
+            raise ValueError(
+                "Basemap not supported. Check spelling or add it to the dictionary."
+            )
 
         left = ipyleaflet.TileLayer(url=basemaps[left_layer], name=left_layer)
         right = ipyleaflet.TileLayer(url=basemaps[right_layer], name=right_layer)
@@ -111,7 +114,6 @@ class Map(ipyleaflet.Map):
 
         control = ipyleaflet.SplitMapControl(left_layer=left, right_layer=right)
         self.add(control)
-
 
     def add_widget(self, widget, position="topright", **kwargs):
         """Add a widget to the map."""
