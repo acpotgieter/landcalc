@@ -84,6 +84,7 @@ nav:
           - examples/foliumap.ipynb
           - examples/splitmap.ipynb
           - examples/funfunctions.ipynb
+          - examples/dropdown.ipynb
     - API Reference:
           - landcalc module: landcalc.md
           - common module: common.md
