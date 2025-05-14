@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import mapping
 
+
 def clip_raster_to_geometry(raster_path, geometry):
     """Clip a raster to a given geometry.
 
@@ -24,9 +25,16 @@ def clip_raster_to_geometry(raster_path, geometry):
     with rasterio.open(raster_path) as src:
         out_image, out_transform = rasterio.mask.mask(src, features, crop=True)
         out_meta = src.meta.copy()
-        out_meta.update({"transform": out_transform, "height": out_image.shape[1], "width": out_image.shape[2]})
+        out_meta.update(
+            {
+                "transform": out_transform,
+                "height": out_image.shape[1],
+                "width": out_image.shape[2],
+            }
+        )
 
     return out_image[0], out_meta
+
 
 def calculate_landcover_stats(raster_array, pixel_size, class_names=None):
     """Calculate area and percent cover for each land cover type.
@@ -41,13 +49,13 @@ def calculate_landcover_stats(raster_array, pixel_size, class_names=None):
     """
     unique, counts = np.unique(raster_array[raster_array != 0], return_counts=True)
     total_pixels = counts.sum()
-    pixel_area = pixel_size ** 2
+    pixel_area = pixel_size**2
 
     data = {
         "class_value": unique,
         "pixel_count": counts,
         "area_m2": counts * pixel_area,
-        "percent": 100 * counts / total_pixels
+        "percent": 100 * counts / total_pixels,
     }
 
     df = pd.DataFrame(data)
@@ -55,6 +63,7 @@ def calculate_landcover_stats(raster_array, pixel_size, class_names=None):
     if class_names:
         df["label"] = df["class_value"].map(class_names)
     return df[["class_value", "label", "area_m2", "percent"]] if "label" in df else df
+
 
 def compare_years(df1, df2):
     """Compare land cover stats between two years.
