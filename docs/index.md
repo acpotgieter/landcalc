@@ -22,24 +22,24 @@ Welcome to **LandCalc**, a Python package for creating interactive maps and perf
 ## 🧰 Installation
 ```python
 import landcalc
-from landcalc import Map 
+from landcalc import Map
 from landcalc.ui import build_gui
 
 # Initialize Your Map
 m = Map(center=(37.5, -95), zoom=4)
 
-# Launch Land Cover Tool 
+# Launch Land Cover Tool
 gui_map = build_gui(m)
 gui_map
 ```
 
 ## How to Use
 1. Select land cover dataset from the dropdown menu
-2. Select available year from dropdown menu 
-3. Click 'Add Layer to Map' button 
+2. Select available year from dropdown menu
+3. Click 'Add Layer to Map' button
 4. Upload a shapefile/ geometry or draw your own directly on the map using the draw tool
-5. Click the 'Calculate' button to visualize the statistics 
-6. Click 'Show Chart' to create a chart of the statistics 
+5. Click the 'Calculate' button to visualize the statistics
+6. Click 'Show Chart' to create a chart of the statistics
 7. Export the statistics using the 'Export as CSV' button
 
 ## Upcoming Tools & Releases
