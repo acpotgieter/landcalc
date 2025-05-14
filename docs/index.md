@@ -19,7 +19,7 @@ Welcome to **LandCalc**, a Python package for creating interactive maps and perf
   - Visualize land cover changes over time
   - Quantify increase or decrease in land cover categories
 
-## 🧰 Installation
+## 🧰 Getting Started 🛠️
 ```python
 import landcalc
 from landcalc import Map
@@ -46,5 +46,6 @@ gui_map
 * 🌴 Island Calc Tool 🌊
 * 🌳 Tree Calc Tool 🪵
 
+### Additional Information 
 -   Free software: MIT License
 -   Documentation: <https://acpotgieter.github.io/landcalc>
