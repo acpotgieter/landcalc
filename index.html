@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-landcalc" class="md-skip">
+        <a href="#landcalc-analysing-land-cover-statistics" class="md-skip">
           Skip to content
         </a>
       
@@ -317,9 +317,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upcoming-tools-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upcoming Tools &amp; Releases
     </span>
   </a>
   
@@ -766,9 +793,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upcoming-tools-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upcoming Tools &amp; Releases
     </span>
   </a>
   
@@ -796,17 +850,64 @@
   
 
 
-<h1 id="welcome-to-landcalc">Welcome to landcalc<a class="headerlink" href="#welcome-to-landcalc" title="Permanent link">&para;</a></h1>
+<h1 id="landcalc-analysing-land-cover-statistics">🌍 LandCalc: Analysing Land Cover Statistics 🌍<a class="headerlink" href="#landcalc-analysing-land-cover-statistics" title="Permanent link">&para;</a></h1>
 <p><a href="https://pypi.python.org/pypi/landcalc"><img alt="image" src="https://img.shields.io/pypi/v/landcalc.svg" /></a></p>
-<p><strong>A python package for geospatial analysis and mapping</strong></p>
+<p>Welcome to <strong>LandCalc</strong>, a Python package for creating interactive maps and performing land cover analysis with ease. It provides both simple map visualization tools and a powerful user interface (<code>landcalc.ui</code>) for analyzing land cover distributions and changes over time.</p>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Free software: MIT License</li>
-<li>Documentation: <a href="https://acpotgieter.github.io/landcalc">https://acpotgieter.github.io/landcalc</a></li>
+<li>🗺️ Create interactive maps using built-in base layers</li>
+<li>📐 Select your region of interest (ROI) by:</li>
+<li>Drawing on the map</li>
+<li>Uploading a shapefile or custom geometry</li>
+<li>🌱 Analyze land cover within your selected geometry:</li>
+<li>Calculate <strong>percent</strong> and <strong>total area (m²)</strong> of each land cover type</li>
+<li>Generate an <strong>interactive chart</strong> of land cover composition</li>
+<li><strong>Export results</strong> as a CSV file</li>
+<li>📊 Perform <strong>change detection</strong> between two years (if supported by the dataset):</li>
+<li>Visualize land cover changes over time</li>
+<li>Quantify increase or decrease in land cover categories</li>
 </ul>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h2 id="installation">🧰 Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">landcalc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">landcalc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">landcalc.ui</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_gui</span>
+
+<span class="c1"># Initialize Your Map</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mf">37.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">95</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Launch Land Cover Tool</span>
+<span class="n">gui_map</span> <span class="o">=</span> <span class="n">build_gui</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">gui_map</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="how-to-use">How to Use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Select land cover dataset from the dropdown menu</li>
+<li>Select available year from dropdown menu</li>
+<li>Click 'Add Layer to Map' button</li>
+<li>Upload a shapefile/ geometry or draw your own directly on the map using the draw tool</li>
+<li>Click the 'Calculate' button to visualize the statistics</li>
+<li>Click 'Show Chart' to create a chart of the statistics</li>
+<li>Export the statistics using the 'Export as CSV' button</li>
+</ol>
+<h2 id="upcoming-tools-releases">Upcoming Tools &amp; Releases<a class="headerlink" href="#upcoming-tools-releases" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Create interactive maps</li>
-<li>Geospatial analysis</li>
+<li>🌴 Island Calc Tool 🌊</li>
+<li>
+<p>🌳 Tree Calc Tool 🪵</p>
+</li>
+<li>
+<p>Free software: MIT License</p>
+</li>
+<li>Documentation: <a href="https://acpotgieter.github.io/landcalc">https://acpotgieter.github.io/landcalc</a></li>
 </ul>
 
 
@@ -830,7 +931,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 2, 2025 19:17:44"><span class="timeago" datetime="2025-05-02T19:17:44+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 2, 2025 19:17:44">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 14, 2025 23:25:54"><span class="timeago" datetime="2025-05-14T23:25:54+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 14, 2025 23:25:54">2025-05-14</span>
   </span>
 
     
