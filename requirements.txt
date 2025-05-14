@@ -7,3 +7,5 @@ localtileserver
 matplotlib
 numpy
 pandas
+rasterio
+rasterio.mask
