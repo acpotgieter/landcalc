@@ -46,6 +46,6 @@ gui_map
 * 🌴 Island Calc Tool 🌊
 * 🌳 Tree Calc Tool 🪵
 
-### Additional Information 
+### Additional Information
 -   Free software: MIT License
 -   Documentation: <https://acpotgieter.github.io/landcalc>

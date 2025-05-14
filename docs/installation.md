@@ -1,11 +1,11 @@
 # 🧰 Installation Guide for LandCalc 🛠️
 
-You can find LandCalc on PyPI for quick and easy installation. 
+You can find LandCalc on PyPI for quick and easy installation.
 
 ## Dependencies ⚙️
 Before installing and using LandCalc, make sure...
-1. You have an updated Python Version 
-2. You have a Google Earth Engine account if using GEE Map 
+1. You have an updated Python Version
+2. You have a Google Earth Engine account if using GEE Map
 
 ## Installation Guide
 
