@@ -1,5 +1,14 @@
 from ipyleaflet import Map, DrawControl, WidgetControl, TileLayer, WMSLayer
-from ipywidgets import Dropdown, Button, Output, VBox, FileUpload, Label, ToggleButtons, HBox
+from ipywidgets import (
+    Dropdown,
+    Button,
+    Output,
+    VBox,
+    FileUpload,
+    Label,
+    ToggleButtons,
+    HBox,
+)
 import geopandas as gpd
 import zipfile
 import io
@@ -21,8 +30,7 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
 
     # ==== TILE/WMS DATASET SELECTION ====
     dataset_dropdown = Dropdown(
-        options=list(LANDCOVER_DB.keys()),
-        description="Dataset:"
+        options=list(LANDCOVER_DB.keys()), description="Dataset:"
     )
 
     year_dropdown = Dropdown(description="Year:")
@@ -47,7 +55,9 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
 
         # Remove previous land cover layers
         for layer in list(map_obj.layers):
-            if isinstance(layer, (TileLayer, WMSLayer)) and layer.name.startswith("LandCover"):
+            if isinstance(layer, (TileLayer, WMSLayer)) and layer.name.startswith(
+                "LandCover"
+            ):
                 map_obj.remove_layer(layer)
 
         if info["source"] == "tile":
@@ -66,14 +76,13 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
                 transparent=True,
                 attribution="Esri",
                 name=f"LandCover: {dataset} {year}",
-                opacity=0.7
+                opacity=0.7,
             )
             map_obj.add_layer(wms_layer)
 
     # ==== ANALYSIS MODE ====
     mode_selector = ToggleButtons(
-        options=["Single Year", "Compare Two Years"],
-        description="Mode:"
+        options=["Single Year", "Compare Two Years"], description="Mode:"
     )
 
     raster_dropdown_1 = Dropdown(options=raster_options, description="Raster 1:")
@@ -117,7 +126,11 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
                         f.write(content)
                     with zipfile.ZipFile(zip_path, "r") as z:
                         z.extractall(tmpdir)
-                    shp_files = [os.path.join(tmpdir, f) for f in os.listdir(tmpdir) if f.endswith(".shp")]
+                    shp_files = [
+                        os.path.join(tmpdir, f)
+                        for f in os.listdir(tmpdir)
+                        if f.endswith(".shp")
+                    ]
                     if not shp_files:
                         raise ValueError("No .shp file found in ZIP.")
                     gdf = gpd.read_file(shp_files[0])
@@ -204,7 +217,7 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
                     labels = last_stats.get("label", last_stats["class_value"])
                     ax.bar(labels, last_stats["percent_change"])
                     ax.set_title("Percent Change in Land Cover")
-                    plt.xticks(rotation=45, ha='right')
+                    plt.xticks(rotation=45, ha="right")
                     plt.tight_layout()
                 plt.show()
         else:
@@ -212,17 +225,19 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
                 print("Run analysis before charting.")
 
     # ==== UI LAYOUT ====
-    ui_elements = VBox([
-        dataset_dropdown,
-        year_dropdown,
-        add_layer_btn,
-        mode_selector,
-        raster_dropdown_1,
-        raster_dropdown_2,
-        upload_label,
-        upload_widget,
-        HBox([calculate_btn, export_btn, chart_btn]),
-    ])
+    ui_elements = VBox(
+        [
+            dataset_dropdown,
+            year_dropdown,
+            add_layer_btn,
+            mode_selector,
+            raster_dropdown_1,
+            raster_dropdown_2,
+            upload_label,
+            upload_widget,
+            HBox([calculate_btn, export_btn, chart_btn]),
+        ]
+    )
 
     map_obj.add_control(draw_control)
     map_obj.add_control(WidgetControl(widget=ui_elements, position="topright"))
@@ -230,5 +245,3 @@ def build_gui(map_obj: Map, raster_options: dict = {}, pixel_size=30):
     map_obj.add_control(WidgetControl(widget=chart_output, position="bottomleft"))
 
     return map_obj
-
-
