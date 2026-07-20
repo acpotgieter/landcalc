@@ -2,7 +2,6 @@
 
 """Tests for `landcalc` package."""
 
-
 import unittest
 
 from landcalc import landcalc
